@@ -71,6 +71,15 @@
 %%  -- it will produce a report you can download.  What you want to
 %%  see is GREEN -- everything Passed.
 
+%%  ltx-talk works with the xcolor package
+\usepackage{xcolor}
+
+%% Need to be sure that if you use colors, the contrast with a
+%%  white background is acceptable.  In the xcolor package, the basic
+%%  blue is acceptable, but red is not.  However, we define "ncsured"
+%%  here, which is an official NCSU brand color that is acceptable!  I
+%%  use it for slide headings and other emphasis
+\definecolor{ncsured}{RGB}{153,0,0}  % NCSU brand color deep reddish maroon
 
 \DocumentMetadata{
   tagging = on,
@@ -118,8 +127,8 @@ pdfstandard = ua-2,
   color            = ncsured,
 }
 
-%%% \usepackage{amsmath,amsfonts}
-%%%\usepackage{amssymb}
+\usepackage{amsmath,amsfonts}
+\usepackage{amssymb}
 \usepackage{bbding}
 
 %% To get accessible math, you MUST include the unicode-math package
@@ -137,16 +146,6 @@ pdfstandard = ua-2,
 %%  examples of including images later in this template for how to
 %%  specify an alt= description to tag your figures/images
 \usepackage{graphicx}
-
-%%  ltx-talk works with the xcolor package
-\usepackage{xcolor}
-
-%% Need to be sure that if you use colors, the contrast with a
-%%  white background is acceptable.  In the xcolor package, the basic
-%%  blue is acceptable, but red is not.  However, we define "ncsured"
-%%  here, which is an official NCSU brand color that is acceptable!  I
-%%  use it for slide headings and other emphasis
-\definecolor{ncsured}{RGB}{153,0,0}  % NCSU brand color deep reddish maroon
 
 %%%%%%%%%%%%%%%%%%%%  NOTATION  %%%%%%%%%%%%%%%%%%%%%  
 
@@ -4082,5 +4081,4 @@ m_1 = \sumiN I(Y_{1i}=1, R_{1i}=0), \hspace{0.1in} m = m_0+m_1$$
    \end{itemize}
 
 
- \end{frame}
  \end{document}
