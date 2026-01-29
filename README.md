@@ -15,3 +15,4 @@ Other Resources:
  * https://verapdf.org/home/ 
  * https://dev.verapdf-rest.duallab.com/
  * https://ctan.org/pkg/ltx-talk?lang=en 
+ * https://esail.tamu.edu/faculty-tutorials/accessible-latex-pdf-ua-2-overleaf-2025/
