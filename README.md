@@ -11,8 +11,7 @@ CRITICAL: You MUST USE lualatex to compile your LaTEX source!! lualatex is inclu
 
 BE PATIENT:  When you process a ltx-talk document (or any other LaTEX document for that matter) using lualatex, it will take some time to process and build the tagging structure.  See the notes in the attached template_ltx-talk.tex file.
 
-Online Resources: 
+Other Resources: 
  * https://verapdf.org/home/ 
  * https://dev.verapdf-rest.duallab.com/
  * https://ctan.org/pkg/ltx-talk?lang=en 
-
