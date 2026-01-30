@@ -1,0 +1,527 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Statistical Methods for Analysis With Missing Data 
+%
+%   Syllabus
+%
+%   Last modified 01/12/2026-- Accessible version
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%  Document meta data  -- needed for tagging, etc - must be located
+%%  BEFORE \documentclass -- see this page at Texas A&M
+%%  https://esail.tamu.edu/faculty-tutorials/accessible-latex-pdf-ua-2-overleaf-2025/
+
+\DocumentMetadata{
+  tagging = on,
+lang = en,
+pdfstandard = ua-2,
+  pdfstandard = a-4f, % optional archival standard
+  tagging-setup = {math/setup={mathml-AF,mathml-SE},
+                   extra-modules={verbatim-mo},
+                   table/header-rows=1}}
+
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{helvet}
+\usepackage{amsmath,amsfonts}
+\usepackage{amssymb}
+
+\usepackage{unicode-math}
+\usepackage{hyperref}
+
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\sffamily\bfseries}
+
+%
+\setlength{\oddsidemargin}{0.0in}
+%\setlength{\evensidemargin}{0.0in}
+\setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+% \renewcommand{\headrulewidth}{0.2pt}
+% \renewcommand{\footrulewidth}{.15pt}
+%\setlength{\evensidemargin}{0.0in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\headheight}{.20in}
+\setlength{\topmargin}{-.75in}
+\setlength{\headsep}{3ex}
+\setlength{\parskip}{2.3ex}
+%\setlength{\footskip}{2ex}
+\setlength{\baselineskip}{2ex}
+\setlength{\parindent}{0pt}
+%\renewcommand{\baselinestretch}{1}
+
+%
+\setlength{\textheight}{9.6in}
+\setlength{\textwidth}{6.7in}
+
+\def \doublespace{\openup 2\jot}
+\renewcommand{\baselinestretch}{1.0}
+\tolerance=500
+
+%%  This will set the document properties -- hopefully it sets the
+%%  Document title as claimed
+
+\hypersetup{ 
+  pdftitle={Statistical Methods for Analysis With Missing Data
+    Reference List}, 
+  pdfauthor={davidian@ncsu.edu}, 
+  pdfsubject={Course notes}, 
+  pdfkeywords={LaTeX, accessibility, PDF/UA-2, NVDA, MathML}, 
+  pdfdisplaydoctitle=true 
+}
+    
+\begin{document}
+
+\sf
+
+\pagestyle{empty}
+
+\newcommand{\emf}{\sf \em}
+\newcommand{\embf}{\sf \textbf}
+\newcommand{\bfem}[1]{\textbf{\em #1}}
+
+\begin{Large}
+\begin{center}
+\textbf{ST 790-003, Statistical Methods for Analysis With Missing Data\\ Spring 2026} 
+\end{center}
+\end{Large}
+
+\pdfbookmark[1]{Course Description}{s:description}
+\section*{Course Description}
+
+Missing data are ubiquitous in almost every area of
+scientific inquiry, and especially in health sciences research
+involving human subjects.
+
+The classical definition of missingness is that data that were
+intended to be collected in a prospective study were not. For example,
+in a medical study designed to collect data longitudinally on every
+participant at a prespecified series of follow-up times, some subjects
+may fail to appear at the clinic for intended measurements at one or
+more times or, more ominously, drop out of the study and never return
+after a certain point. If the reasons for failure to appear or dropout
+are related to the issues under study, e.g., if subjects who are
+benefiting less from their assigned treatments are more likely to drop
+out, intuitively, failure to acknowledge this somehow could distort
+conclusions. Missing data of this type are such a great challenge in
+pharmaceutical and biotechnology research that in 2010 the US Food and
+Drug Administration asked the National Research Council of the
+National Academy of Sciences to convene an expert Panel on the
+Handling of Missing Data Clinical Trials to develop guidance on how
+missingness should be handled in the regulatory context.
+
+Missingness also occurs in data that arise in other contexts. For
+example, in retrospective analysis of observational data already
+collected, such as those from completed studies or captured in other
+large databases, it is routinely the case that not all variables are
+available on all subjects or other units. Contrary to popular belief,
+``big data'' are not somehow exempt from issues of missingness. For
+example, the use of electronic health records, which are of course
+observational in nature, is of great current interest in the study of
+the comparative effectiveness of drugs and other interventions. The
+fact that some subjects have relatively more observations than others
+often reflects the fact that less healthy individuals tend to have
+more encounters with the healthcare system. These same individuals may
+also be more likely to receive certain interventions and to have
+health outcomes worse than those those of healthier individuals. Thus,
+there is a relative ``missingness'' of information among different
+individuals that is likely associated with the issues under study.
+
+Missing data have important implications for analysis. At the very
+least, there is a loss of information and reduction in precision of
+inference on the population of interest relative to that intended. Of
+much greater concern is the potential for biased and misleading
+inferences that can result if the reasons for missingness are related
+to outcomes of interest. Accordingly, principled methods to take this
+challenge into appropriate account are required.
+
+This course provides an overview of modern statistical frameworks and
+methods for analysis in the presence of missing data. Both
+methodological developments and applications are emphasized. 
+
+\pdfbookmark[1]{Logistics}{s:logistics}
+\section*{Logistics}
+
+\bfem{Lectures:}  T-Th, 3:00 - 4:15 pm, 5270 SAS Hall (3 credit hours)
+
+\bfem{Course website:}    \url{https://www4.stat.ncsu.edu/~davidian/st790/}
+
+ \bfem{Prerequisites:}  ST 702, ST 704, ST 705 (or equivalents at the
+   PhD level); basic knowledge of statistical models, programming skills
+
+\bfem{Instructor:}  \textbf{Marie Davidian}, 5124 SAS Hall,
+davidian@ncsu.edu, \url{www4.stat.ncsu.edu/~davidian}
+
+\bfem{Office hours:} On Zoom Th, 1:00 - 2:30 pm, and by appointment
+(Zoom link available on the course website)
+
+%\bfem{Teaching Assistant:} 
+%  \textbf{Peter Norwood},
+%  pnorwoo@ncsu.edu, Zoom office hours M 7:00 - 8:00 pm
+
+\pdfbookmark[1]{Learning Outcomes}{s:goals}
+\section*{Learning Outcomes}
+
+Upon completion of the course, students will be able to:
+\begin{enumerate}
+\item Draw on a foundation of knowledge regarding the main fundamental
+  frameworks and methods for handling missing data that will enable 
+  them to read the current literature and undertake research in this
+  area
+
+\item Appreciate of the implications of missing data for valid
+  inference and understand clearly the pros and cons of the major
+  classes of popular methods for handling missing data
+
+\item Select appropriate methods in practice, explain the assumptions
+  required for their principled use, and implement the methods
+  themselves or using available software.
+\end{enumerate}
+
+\pdfbookmark[1]{Course Test}{s:text}
+\section*{Course Text}
+
+Lecture notes prepared by the instructor.  These notes are available
+on the course website.
+
+\pdfbookmark[1]{Course Delivery}{s:delivery}
+\section*{Course Delivery}
+
+All lectures for the course will be delivered in real time and in
+person durin scheduled class meetings (synchronous
+delivery). 
+
+\bfem{Class recordings:} The instructor will record lectures and make them available upon
+request to registered students.  The recordings are meant as a resource for
+students to revisit the material rather than as an alternative to
+attendance in real time. The recordings will also allow students who
+must miss a lecture due to illness or other conflict to review the
+material they missed.  Recordings will capture the entire lecture and
+will include questions and comments of both instructor and students.
+These recordings may be used beyond the current semester or in any
+setting outside of the course.  Contact the instructor if you have
+concerns.
+
+\pdfbookmark[1]{Attendance}{s:attend}
+\section*{Attendance}
+
+Regular attendance of lectures is expected.  If you must miss a
+lecture due to illness, job interview, etc, please inform the
+instructor in advance of the lecture by email.
+
+Chronic unexcused absenteeism will result in at least a 5 point
+reduction in the Final Score, as determined by the instructor.
+
+\pdfbookmark[1]{Communication}{s:comm}
+\section*{Communication}
+
+Office hours for the instructor will be held online on Zoom.  Students
+can email the instructor anytime to make an appointment to meet
+outside of office hours on Zoom to ask questions about course material
+or homework assignments.
+
+Other than Zoom office hours, the primary mode of communication
+between the instructor and students will be email.  Please use your NC
+State email and the subject line ``ST 790.''  I should respond within
+one day.
+
+Students should check their email often for announcements from the
+instructor, and students should feel free to email the instructor with
+questions or concerns.  Please use your NC State email and the subject
+line ``ST 790.''
+
+\pdfbookmark[1]{Grading}{s:grading}
+\section*{Grading}
+
+Final grade will be determined by the Final Score =
+0.75$\times$H +  0.25$\times$F, where 
+H is the average on homework and 
+F is the score on the final project, where each is scored out of 100. 
+{\em There will no midterm or final exam}.  Conversion of this score
+into a letter grade will be made according to the following tentative
+grading scale (the upper score in each range except A+ belongs to the
+next highest grade): A+, 100; A, 92-99; A-, 90-92; B+, 88-90; B 82-88;
+B-, 78-82.  Scores below 70 will be handled on a case-by-case basis.
+
+Auditors must attend class and attempt and turn in homework problems.
+Auditors are not required to complete the final project.
+
+\pdfbookmark[1]{Homework}{s:homework}
+\section*{Homework}
+
+There will be four (4) homework assignments.  Each homework assignment
+will comprise both analytical problems and data analysis problems.
+The analytical problems will involve derivations, proofs, and
+simulation studies.  The data analysis problems will involve carrying
+out analyses of data using the methods discussed in the lectures as
+programmed by you or implemented in available software.  For problems
+involving programming, the relevant parts of the program and its
+output should be turned in, along with interpretation of the results
+as dictated by the problem. 
+
+Students are permitted and even encouraged to work together on
+homework; however, each student must prepare his/her own solutions.
+Blind copying of the work of other students demonstrates that the
+student doing the copying is not serious about developing the
+independence required for a PhD and has obvious disadvantages for
+mastery of the material.
+
+Homework assignments should be typed and prepared as pdf files.
+Completed homeworks should be emailed to the instructor {\em at or
+  prior to the beginning of class} on the due date.
+
+\bfem{Use of artificial intelligence and other resources:} Use of
+any resources beyond the course materials is permitted (books,
+articles, artificial intelligence (AI), etc) is permitted in
+completing the homework assignments.  However, students must
+synthesize the information from such sources in preparing and writing
+up his/her own solutions {\em without AI assistance}.
+
+\bfem{Originality-checking software:} The instructor will not use
+originality-checking software to detect originality of student
+homework submissions.  Rather, the instructor expects students to
+follow the above requirement, as, again, blind reliance on such
+resources has obvious disadvantages for mastery of the material.
+
+\bfem{Late homework:} Unexcused late homework will be discounted by
+50\%.  If you anticipate having problems meeting the due date, please
+contact the instructor by email at least one day prior to the due
+date.
+
+\bfem{Tentative assignments/due dates:}  Definitive information
+will be posted on the course website.  
+
+\begin{tabular}{ll}
+Homework 1 &  Chapters 1-2, due Tuesday, February 3\\
+Homework 2 & Chapter 3, due Tuesday, March 3\\
+Homework 3 & Chapters 4-5, due Thursday, April 2\\
+Homework 4 & Chapters 5-7, due Thursday, April 23\\
+\end{tabular}
+
+\pdfbookmark[1]{Final Project}{s:project}
+\section*{Final Project}
+
+A final project will be assigned in which teams of students will
+collaborate on identifying a paper in the recent literature (2020 or
+later) that reports on methodology that goes beyond the foundational
+material discussed in class.  Each team will prepare a set of slides
+(no more than 20) presenting a summary of the key methodology proposed
+in the paper, using the notation developed in this course (to the
+extent possible), along with a discussion of how the methodology is
+related to work reviewed in the course and anything else the team
+finds relevant. The slides should make the main, big ideas and
+advances the paper accessible to anyone with the same background in
+this area gained from the course (e.g., fellow students). Thus, the
+emphasis should be on the big picture and not on technical details.
+
+Teams will turn in their slides for evaluation by and feedback from
+the instructor.  Tentatively, teams will also report their work in an oral
+presentation to the class (size of class permitting), possibly held on
+the last day of class, during the scheduled final exam slot for the
+course, or at another mutually agreeable time during the exam period
+(to be determined later in the semester by class consensus).
+
+Teams will be determined at random by the instructor.  
+
+\pdfbookmark[1]{Computing/Software}{s:computing}
+\section*{Computing/Software}
+
+Implementation of methods discussed in the lectures in SAS and R
+software will be demonstrated.  Students are free to program in the
+language of their choice and can use any software of their choice,
+including but not limited to SAS and R.  Access to computing resources
+that support SAS and R is thus required.
+
+\pdfbookmark[1]{Tentative Schedule}{s:schedule}
+\section*{Tentative Schedule}
+
+Tentative content of course meetings, January 13 - April 28, 2026; Wellness Day
+is February 17, Spring Break is March 16-20.  Final Exam slot is May
+5, 3:30 - 6:00 pm.  Dates of coverage may be subject to change.
+\begin{description}
+\item 01/13 - 01/20 -- Introduction and Motivation
+\begin{itemize}
+\item Fundamental problem of missing data
+ \item Examples
+\item Statistical framework and taxonomy of missing data mechanisms
+\item Review of estimating equations
+\end{itemize}
+
+\item 01/20 - 01/22 -- Na{\"{i}}ve Methods
+\begin{itemize}
+\item Complete or available case methods
+\item Single imputation methods
+\item Last Observation Carried Forward (LOCF)
+\end{itemize}
+
+\item 01/27 - 02/12 -- Likelihood-based Methods Under Missing At
+  Random (MAR)
+\begin{itemize}
+\item Review of maximum likelihood inference for full data
+\item Factorization of the density of $(R,Z)$
+\item Observed data likelihood and ignorability
+\item Expectation-Maximization (EM) algorithm
+\item Missing information principle
+\item Inference in practice
+\item Bayesian inference
+\end{itemize}
+
+\item 02/12 - 03/10 -- Multiple Imputation Methods Under Missing At
+  Random (MAR)
+\begin{itemize}
+\item Fundamentals of multiple imputation
+\item Rubin's variance formula
+\item Proper versus improper imputation
+\item Asymptotic results
+\item Imputation from a multivariate normal distribution 
+\item Multivariate Imputation by Chained Equations (MICE)
+\item Imputation using machine/deep learning
+\item Additional results  
+\end{itemize}
+
+\item 03/10 - 04/02 -- Inverse Probability Weighted (IPW) Methods Under Missing At
+  Random (MAR)
+\begin{itemize}
+\item IPW estimators for a single mean
+\item IPW estimator in regression  
+\item Weighted generalized estimating equations for longitudinal data
+  with dropout
+\item Inverse weighting at the occasion level
+\item Inverse weighting at the individual level
+\item Doubly robust augmented AIPW estimation
+\item Inverse probability weighting with nonmonotone missingness
+  \item Semiparametric theory
+\end{itemize}
+
+\item 04/07 - 04/16 - Nonignorable Missingness (MNAR)
+\begin{itemize}
+\item Selection models
+\item Pattern mixture models
+\item Shared parameter models
+\end{itemize}
+
+\item 04/16 - 04/23 -- Sensitivity Analysis to Deviations from Missing
+At Random (MAR)
+\begin{itemize}
+\item Fundamental problem of identifiability
+\item Estimation of a single mean
+  \item Estimation of a single mean with auxiliary data
+\item Longitudinal data with dropout
+\end{itemize}
+
+\item 04/28 -- Last day of class, Wrap-up, Presentations?
+\end{description}
+
+\pdfbookmark[1]{Further Resources}{s:resources}
+\section*{Further Resources}
+
+There is no textbook for this course; as noted above, we will use
+lecture notes prepared by the instructor, and no other books are
+required.  The notes cite publications where further information on
+the specific developments presented can be found.  In addition, if you
+are interested in more general, further reading on missing data
+methods, the following books are good resources:
+\begin{description}
+\item Little, R. J. A. and Rubin, D. B. (2019). {\em Statistical
+    Analysis With Missing Data, Third Edition}. New York: Wiley.
+
+\item Molenberghs, G., Fitzmaurice, G., Kenward, M. G., Tsiatis,
+  A. A., and Verbeke, G.  (2014).  {\em Handbook of Missing Data
+    Methodology}.  Boca Raton, Florida: Chapman \& Hall/CRC Press.
+
+\item Molenberghs, G. and Kenward, M. G. (2007). {\em MIssing Data in
+    Clinical Studies}. Chichester, UK: Wiley.
+
+\item O'Kelly, M. and Ratitch, B. (2014). {\em Clinical Trials with
+    Missing Data: A Guide for Practitioners}. Chichester, UK: Wiley.
+
+\item Schafer, J. L. (1997).  {\em Analysis of Incomplete Multivariate
+    Data}.  London: Chapman \& Hall.
+
+\item Tsiatis, A. A. (2006).  {\em Semiparametric Inference and
+    Missing Data}.  New York: Springer. 
+\end{description}
+
+\pdfbookmark[1]{Administrative Matters}{s:admin}
+\section*{Administrative Matters}
+
+\bfem{Class Evaluations for NC State Students:} ClassEval is the
+end-of-semester survey for students to evaluate the instruction of all
+university classes. The current survey is administered online and
+includes 12 closed-ended questions and 3 open-ended questions. Deans,
+department heads, and instructors may add a limited number of their
+own questions to these 15 common-core questions.
+
+Each semester students’ responses are compiled into a ClassEval report
+for every instructor and class. Instructors use the evaluations to
+improve instruction and include them in their promotion and tenure
+dossiers, while department heads use them in annual reviews. The
+reports are included in instructors’ personnel files and are
+considered confidential.
+
+Online class evaluations will be available for students to complete
+during the last two weeks of the semester for full-semester courses
+and the last week of shorter sessions. Students will receive an email
+directing them to a website to complete class evaluations. These
+become unavailable at 8 am on the first day of finals.
+\begin{itemize}
+\item Contact ClassEval Help Desk: classeval@ncsu.edu
+\item ClassEval website: \url{http://go.ncsu.edu/cesurvey}
+\item More information about ClassEval:  \url{http://go.ncsu.edu/cesurvey}
+\end{itemize}
+
+\bfem{Academic integrity:} Students are required to comply with the
+university policy on academic integrity found in the Code of Student
+Conduct 11.35.01 sections 8 and 9; see
+\url{http://policies.ncsu.edu/policy/pol-11-35-01}.  Therefore,
+students are required to uphold the Pack Pledge: “I have neither iven
+nor received unauthorized aid on this test or assignment.” Violations
+of academic integrity will be handled in accordance with the Student
+Discipline Procedures; see
+\url{https://policies.ncsu.edu/regulation/reg-11-35-02/}.  Please
+refer to the Academic Integrity web page,
+\url{https://studentconduct.dasa.ncsu.edu/academic-integrity-overview/},
+for a detailed explanation of the University’s policies on academic
+integrity and some of the common understandings related to those
+policies.
+
+\bfem{Other Policies:}  Students are responsible for reviewing the NC State
+University Policies, Rules, and Regulations that pertain to
+their course rights and responsibilities, including:  
+\begin{itemize}
+\item Equal Opportunity and Non-Discrimination Policy Statement
+  \url{https://policies.ncsu.edu/policy/pol-04-25-05} with additional
+  references at \url{https://oied.ncsu.edu/equity/policies}
+
+\item The Code of Student Conduct at
+  \url{https://policies.ncsu.edu/policy/pol-11-35-01} and in
+  particular the policy on academic integrity.  The instructor expects
+  that students will abide by these policies.  As noted above,
+  students {\em may} consult with one another on the homework, similar
+  to how real researchers might consult with one another in carrying
+  out their work.  However, students engaging in direct copying of the
+  work or computer programs of fellow students will be considered in
+  violation of policies on academic integrity.
+
+\item Grades and Grade Point Average, regulation at
+  \url{https://policies.ncsu.edu/regulation/reg-02-50-03}.
+\end{itemize}
+
+\bfem{Disability Resources:} Reasonable accommodations will be made
+for students with verifiable disabilities.  For NC State students, to
+take advantage of available accommodations, students must register
+with Disability Resource Office (DRO),
+\url{https://dro.dasa.ncsu.edu/}.  For more information on NC State's
+policy on working with students with disabilities, please see the
+Policies, Rules, and Regulations page maintained byt he DRO at
+\url{https://dro.dasa.ncsu.edu/about-us/policies-rules-regulations/}
+and the Academic Accommodations for Students with Disabilities Regulation
+(REG02.20.01)
+(\url{https://policies.ncsu.edu/regulation/reg-02-20-01/}).
+
+
+\end{document}
+
