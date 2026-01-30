@@ -1,5 +1,6 @@
 # latex-slides
 LaTeX Slide Example (2026)
+(Dr. Marie Davidian - NC State Statistis Professor)
 
 How to use the new ltx-talk LaTEX package to create accessible pdfs of slides; see attachment template_ltx-talk.tex
 
